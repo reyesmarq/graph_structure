@@ -1,12 +1,17 @@
 import { gql } from "apollo-server-express"
 
 const UserTypeDef = gql`
-  type Query {
-    users: String
+  extend type Query {
+    users: [User!]!
   }
 
-  type Mutation {
+  extend type Mutation {
     createUser(name: String): String
+  }
+
+  type User {
+    name: String
+    age: Int
   }
 `
 
